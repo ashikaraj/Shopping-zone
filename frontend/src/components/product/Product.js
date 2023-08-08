@@ -29,10 +29,15 @@ const Product = ({ product, col }) => {
             <h5 className="card-title mb-0 flex-grow-1">
               <Link to={`/product/${product._id}`}>{product.name}</Link>
             </h5>
+            
           </div>
           <div className="ratings mt-auto">
-            {/* Ratings and Reviews content */}
-          </div>
+                        <div className="rating-outer">
+                            <div className="rating-inner" style={{ width: `${(product.ratings / 5) * 100}%` }}></div>
+                        </div>
+                        <span id="no_of_reviews">({product.numOfReviews} Reviews)</span>
+                    </div>
+          
           <p className="card-text mb-0">₹{product.price}</p>
           <FontAwesomeIcon
             icon={isInWishlist ? faHeartSolid : faHeartRegular}
