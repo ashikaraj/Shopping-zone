@@ -37,7 +37,7 @@ const Header = () => {
            <div className="col-12 col-md-3">
               <div className="navbar-brand">
                 <Link to="/">
-                    <img src="/images/shopit_logo.png"  />
+                    <img src="/images/shopzone-logo2.png"  />
                </Link>
             </div>
         </div>
@@ -69,16 +69,21 @@ const Header = () => {
              <div className="dropdown-menu" aria-labelledby="dropDownMenuButton">
 
              {user && user.role === 'admin' && (
-                      <Link className="dropdown-item text-info" to="/dashboard">Dashboard</Link>
+                      <Link className="dropdown-item text-info" to="/dashboard">Dashboard📊</Link>
              )}
+             {user && user.role !== 'admin' && (
+  <Link className="dropdown-item text-info" to="/wishlist">
+    My Wishlist❤️
+  </Link>
+)}
               
               <hr className="dropdown-divider" />   
-                <Link className="dropdown-item text-success" to="/orders/me">My Orders</Link> 
+                <Link className="dropdown-item text-success" to="/orders/me">My Orders🛒</Link> 
                 <hr className="dropdown-divider" /> 
-                <Link className="dropdown-item text-primary" to="/me">My Profile</Link>
+                <Link className="dropdown-item text-primary" to="/me">My Profile👤</Link>
                 <hr className="dropdown-divider" /> 
                 <Link className="dropdown-item text-danger" to="/"  onClick={logoutHandler}>
-                                    Sign Out
+                                    Sign Out➡️
                                 </Link>
                                 </div>
               </div>

@@ -142,7 +142,7 @@ const Payment = () => {
     <div className="row wrapper">
         <div className="col-10 col-lg-5">
             <form className="shadow-lg" onSubmitCapture={submitHandler}>
-                <h1 className="mb-4 text-center text-primary">Card Info</h1>
+                <h1 className="mb-4 text-center ">Card Info</h1>
                 <div className="form-group">
                     <label htmlFor="card_num_field">Card Number:</label>
                     <CardNumberElement

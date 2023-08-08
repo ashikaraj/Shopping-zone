@@ -5,7 +5,7 @@ const Footer = () => {
     <Fragment>
       <footer className="py-1">
                 <p className="text-center mt-1">
-                    Shopping Zone - 2022-2023, All Rights Reserved
+                    ShopZone 2023-2024, All Rights Reserved.
                 </p>
             </footer>
     </Fragment>

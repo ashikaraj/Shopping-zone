@@ -8,7 +8,8 @@ import Sidebar from './Sidebar'
 
 import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAdminProducts,clearErrors } from '../../actions/productActions'
+import { getAdminProducts,deleteProduct,clearErrors } from '../../actions/productActions'
+import { DELETE_PRODUCT_RESET } from '../../constants/productConstants'
 
 
 const ProductsList = () => {
@@ -17,6 +18,7 @@ const ProductsList = () => {
     const navigate = useNavigate();
 
     const { loading, error, products } = useSelector(state => state.products);
+    const { error: deleteError, isDeleted}= useSelector(state => state .product)
 
     useEffect(() => {
         dispatch(getAdminProducts());
@@ -25,8 +27,18 @@ const ProductsList = () => {
             alert.error(error);
             dispatch(clearErrors());
           }
+          if (deleteError) {
+            alert.error(deleteError);
+            dispatch(clearErrors());
+          }
       
-        }, [dispatch, alert, error ,navigate]);
+          if (isDeleted) {
+            alert.success('Product deleted successfully');
+            navigate('/admin/products');
+            dispatch({ type: DELETE_PRODUCT_RESET });
+          }
+      
+        }, [dispatch, alert, error  ,deleteError, isDeleted,navigate]);
         
         const setProducts = () => {
             const data = {
@@ -69,7 +81,7 @@ const ProductsList = () => {
                         <Link to={`/admin/product/${product._id}`} className="btn btn-primary py-1 px-2">
                             <i className="fa fa-pencil"></i>
                         </Link>
-                        <button className="btn btn-danger py-1 px-2 ml-2"
+                        <button className="btn btn-danger py-1 px-2 ml-2" onClick={()=>deleteProductHandler(product._id)}
                        
                          >
                             <i className="fa fa-trash"></i>
@@ -79,6 +91,10 @@ const ProductsList = () => {
             })
         }
             return data;
+        }
+
+        const deleteProductHandler = (id) => {
+            dispatch(deleteProduct(id))
         }
 
 
@@ -92,7 +108,7 @@ const ProductsList = () => {
 
         <div className="col-12 col-md-10">
             <Fragment>
-                <h1 className="my-5">All Products</h1>
+                <h1 className="my-5 text-center">ALL PRODUCTS</h1>
 
                 {loading ? <Loader /> : (
                     <MDBDataTable

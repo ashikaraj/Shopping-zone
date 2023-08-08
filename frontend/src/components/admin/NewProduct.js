@@ -106,10 +106,10 @@ const NewProduct = () => {
                 <div className="wrapper my-5">
                     <form className="shadow-lg" onSubmit={submitHandler}
                      encType='multipart/form-data'>
-                        <h1 className="mb-4">New Product</h1>
+                        <h1 className="mb-4 text-center">New Product</h1>
 
                         <div className="form-group">
-                            <label htmlFor="name_field">Name</label>
+                            <label htmlFor="name_field">Name:</label>
                             <input
                                 type="text"
                                 id="name_field"
@@ -120,7 +120,7 @@ const NewProduct = () => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="price_field">Price</label>
+                            <label htmlFor="price_field">Price:</label>
                             <input
                                 type="text"
                                 id="price_field"
@@ -131,12 +131,12 @@ const NewProduct = () => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="description_field">Description</label>
+                            <label htmlFor="description_field">Description:</label>
                             <textarea className="form-control" id="description_field" rows="8" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="category_field">Category</label>
+                            <label htmlFor="category_field">Category:</label>
                             <select className="form-control" id="category_field" value={category} onChange={(e) => setCategory(e.target.value)}>
                                 {categories.map(category => (
                                     <option key={category} value={category} >{category}</option>
@@ -145,7 +145,7 @@ const NewProduct = () => {
                             </select>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="stock_field">Stock</label>
+                            <label htmlFor="stock_field">Stock:</label>
                             <input
                                 type="number"
                                 id="stock_field"
@@ -156,7 +156,7 @@ const NewProduct = () => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="seller_field">Seller Name</label>
+                            <label htmlFor="seller_field">Seller Name:</label>
                             <input
                                 type="text"
                                 id="seller_field"
@@ -167,7 +167,7 @@ const NewProduct = () => {
                         </div>
 
                         <div className='form-group'>
-                            <label>Images</label>
+                            <label>Images:</label>
 
                             <div className='custom-file'>
                                 <input

@@ -29,16 +29,19 @@ import UpdatePassword from './components/user/UpdatePassword';
 import ForgotPassword from './components/user/ForgotPassword';
 import NewPassword from './components/user/NewPassword'
 
+// wishlist
+import Wishlist from './components/wishlist/Wishlist';
+
 // Admin Imports
 import Dashboard from './components/admin/Dashboard'
 import ProductsList from './components/admin/ProductsList'
 import NewProduct from './components/admin/NewProduct'
-// import UpdateProduct from './components/admin/UpdateProduct'
-// import OrdersList from './components/admin/OrdersList'
-// import ProcessOrder from './components/admin/ProcessOrder'
-// import UsersList from './components/admin/UsersList'
-// import UpdateUser from './components/admin/UpdateUser'
-// import ProductReviews from './components/admin/ProductReviews'
+import UpdateProduct from './components/admin/UpdateProduct'
+import OrdersList from './components/admin/OrdersList'
+import ProcessOrder from './components/admin/ProcessOrder'
+import UsersList from './components/admin/UsersList'
+import UpdateUser from './components/admin/UpdateUser'
+import ProductReviews from './components/admin/ProductReviews'
 
 import ProtectedRoute from './components/route/ProtectedRoute'
 import { loadUser } from './actions/userActions'
@@ -113,7 +116,7 @@ function App() {
             <Route path='/orders/me' element={ <ProtectedRoute><ListOrders /></ProtectedRoute>} />
             <Route path='/order/:id' element={ <ProtectedRoute><OrderDetails /></ProtectedRoute>} />
             
-           
+            <Route path='/wishlist' element={ <ProtectedRoute><Wishlist /></ProtectedRoute>} />
             
           </Routes >
         </div>
@@ -122,6 +125,12 @@ function App() {
         <Route path='/dashboard' isAdmin={true} element={ <ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path='/admin/products' isAdmin={true} element={ <ProtectedRoute><ProductsList /></ProtectedRoute>} />
         <Route path='/admin/product' isAdmin={true} element={ <ProtectedRoute>< NewProduct/></ProtectedRoute>} />
+        <Route path='/admin/product/:id' isAdmin={true} element={ <ProtectedRoute>< UpdateProduct/></ProtectedRoute>} />
+        <Route path='/admin/orders' isAdmin={true} element={ <ProtectedRoute>< OrdersList/></ProtectedRoute>} />
+        <Route path='/admin/order/:id' isAdmin={true} element={ <ProtectedRoute>< ProcessOrder/></ProtectedRoute>} />
+        <Route path='/admin/users' isAdmin={true} element={ <ProtectedRoute>< UsersList/></ProtectedRoute>} />
+        <Route path='/admin/user/:id' isAdmin={true} element={ <ProtectedRoute><UpdateUser/></ProtectedRoute>} />
+        <Route path='/admin/reviews' isAdmin={true} element={ <ProtectedRoute><ProductReviews/></ProtectedRoute>} />
         </Routes >
         {!loading && (!isAuthenticated || user.role !== 'admin') && (
           <Footer />

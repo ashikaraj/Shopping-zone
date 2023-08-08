@@ -16,6 +16,7 @@ import { useAlert } from "react-alert";
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 
+
 const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([1, 1000]);
@@ -45,7 +46,7 @@ const Home = () => {
 
   const {
     loading, products, error, productsCount, resPerPage, filteredProductsCount } = useSelector((state) => state.products);
-
+    const { user  } = useSelector(state => state.auth)
   useEffect(() => {
     if (error) {
       return alert.error(error);
@@ -68,7 +69,10 @@ const Home = () => {
       ) : (
         <Fragment>
           <MetaData title={"Buy Best Products Online"} />
-          <h1 id="products_heading">Latest Products</h1>
+          <br/>
+          {/* <h2 id="products_heading" className="text-success"> Welcome! check out our latest products.</h2> */}
+          <h3 id="products_heading" > Hey {user ? <span className="user-name">{user.name}</span> : ''}! Check out our latest products🛍️</h3>
+
 
           <section id="products" className="container mt-5">
             <div className="row">
